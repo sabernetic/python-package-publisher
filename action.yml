@@ -8,7 +8,4 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/publisher.sh
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
-      shell: bash
+    - run: echo $WHAT_TO_DO
