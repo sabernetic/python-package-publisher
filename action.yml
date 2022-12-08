@@ -10,5 +10,5 @@ runs:
   steps:
     - run: echo "Hello World!"
       shell: bash
-    - run: echo "composite: ${{ inputs.what-to-do }}"
+    - run: echo "${{ inputs.what-to-do }}"
       shell: bash
