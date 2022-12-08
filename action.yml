@@ -1,10 +1,9 @@
-name: 'Hello Action'
-description: 'Complete some task'
+name: 'Publish Twine'
+description: 'Publish the repository to codeartifact'
 inputs:
   what-to-do:  # id of input
     description: 'What to Do'
     required: true
-    default: 'Config custom/private package Repo'
 runs:
   using: "composite"
   steps:
