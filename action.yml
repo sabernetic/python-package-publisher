@@ -21,4 +21,9 @@ runs:
       shell: bash
     - run: python setup.py sdist bdist_wheel
       shell: bash
+    - run: ls -a
+      shell: bash
+    - run: pwd
+      shell: bash
     - run: twine upload dist/*
+      shell: bash
