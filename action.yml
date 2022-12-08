@@ -1,13 +1,25 @@
-name: 'Publish Twine'
+name: 'Publish CodeArtifact'
 description: 'Publish the repository to codeartifact'
 inputs:
-  what-to-do:  # id of input
-    description: 'What to Do'
+  domain:
+    description: "CodeArtifact Domain"
+    required: true
+  repo:
+    description: 'CodeArtifact Repository'
+    required: true
+  aws-account-id:
+    description: "AWS Accoung ID"
     required: true
 runs:
   using: "composite"
   steps:
-    - run: echo "Hello World!"
+    - run: export TWINE_USERNAME=aws
       shell: bash
-    - run: echo "${{ inputs.what-to-do }}"
+    - run: export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --query authorizationToken --output text`
+      shell: bash
+    - run: export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --repository ${{ inputs.repo }} --format pypi --query repositoryEndpoint --output text`
+      shell: bash
+    - run: python setup.py sdist bdist_wheel
+      shell: bash
+    - run: twine upload dist/*
       shell: bash
