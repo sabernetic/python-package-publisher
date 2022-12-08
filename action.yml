@@ -10,3 +10,4 @@ runs:
   steps:
     - run: |
       echo "Hello World!"
+      echo ${{ inputs.what-to-do }}
