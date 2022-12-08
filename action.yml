@@ -8,6 +8,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: |
-      echo "Hello World!"
-      echo ${{ inputs.what-to-do }}
+    - run: echo "Hello World!"
+      shell: bash
+    - run: echo ${{ inputs.what-to-do }}
+      shell: bash
