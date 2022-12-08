@@ -9,5 +9,5 @@ runs:
   using: "composite"
   steps:
     - run: |
-    echo "Hello World!"
-    echo $WHAT_TO_DO
+      echo "Hello World!"
+      echo $WHAT_TO_DO
