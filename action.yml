@@ -13,17 +13,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: export TWINE_USERNAME=aws
-      shell: bash
-    - run: export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --query authorizationToken --output text`
-      shell: bash
-    - run: export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --repository ${{ inputs.repo }} --format pypi --query repositoryEndpoint --output text`
-      shell: bash
-    - run: python setup.py sdist bdist_wheel
-      shell: bash
-#     - run: ls -a
-#       shell: bash
-#     - run: pwd
-#       shell: bash
-#     - run: twine upload dist/*
-#       shell: bash
+    - run: |
+      export TWINE_USERNAME=aws
+      export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --query authorizationToken --output text`
+      export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --repository ${{ inputs.repo }} --format pypi --query repositoryEndpoint --output text`
+      python setup.py sdist bdist_wheel
+      twine upload dist/*
+    shell: bash
