@@ -19,4 +19,3 @@ runs:
       export TWINE_REPOSITORY_URL=`aws codeartifact get-repository-endpoint --domain ${{ inputs.domain }} --domain-owner ${{ inputs.aws-account-id }} --repository ${{ inputs.repo }} --format pypi --query repositoryEndpoint --output text`
       python setup.py sdist bdist_wheel
       twine upload dist/*
-    shell: bash
