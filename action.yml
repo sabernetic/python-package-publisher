@@ -8,7 +8,7 @@ inputs:
     description: 'CodeArtifact Repository'
     required: true
   aws-account-id:
-    description: "AWS Accoung ID"
+    description: "AWS Account ID"
     required: true
 runs:
   using: "composite"
