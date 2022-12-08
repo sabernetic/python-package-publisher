@@ -21,5 +21,4 @@ runs:
       shell: bash
     - run: python setup.py sdist bdist_wheel
       shell: bash
-    - run: twine upload ${{ github.action_path }}/dist/*
-      shell: bash
+    - run: twine upload dist/*
