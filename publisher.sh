@@ -1,7 +1,7 @@
 #!/bin/bash
-domain=$1
-repo=$2
-acc_id=$3
+acc_id=$1
+domain=$2
+repo=$3
 
 export TWINE_USERNAME=aws
 export TWINE_PASSWORD=`aws codeartifact get-authorization-token --domain $domain --domain-owner $acc_id --query authorizationToken --output text`
