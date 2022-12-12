@@ -1,7 +1,7 @@
 name: 'Publish CodeArtifact'
 description: 'Publish the repository to codeartifact'
 inputs:
-  aws_account_id:
+  aws-account-id:
     description: "AWS Account ID"
     required: true
   domain:
@@ -13,5 +13,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - run: ${{ github.action_path }}/publisher.sh ${{ inputs.aws_account_id }} ${{ inputs.domain }} ${{ inputs.repo }}
+      - run: ${{ github.action_path }}/publisher.sh ${{ inputs.aws-account-id }} ${{ inputs.domain }} ${{ inputs.repo }}
         shell: bash
