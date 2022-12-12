@@ -13,5 +13,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - run: sudo ${{ github.action_path }}/publisher.sh ${{ inputs.aws-account-id }} ${{ inputs.domain }} ${{ inputs.repo }}
+      - run: ${{ github.action_path }}/publisher.sh ${{ inputs.aws-account-id }} ${{ inputs.domain }} ${{ inputs.repo }}
         shell: bash
